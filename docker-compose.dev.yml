@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   react-dev:
+    container_name: react-dev
     image: node:22
     working_dir: /app
     volumes:

@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   react-app:
+    container_name: react-prod
     build: .
     ports:
       - "3001:80"
-    container_name: react-production
