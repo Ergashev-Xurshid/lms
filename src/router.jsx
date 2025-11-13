@@ -12,21 +12,47 @@ import AttendanceJournal from "./pages/teacher/trening/AttendanceJournal";
 import AssignmentDatabase from "./pages/teacher/assessmentTasks/AssignmentDatabase";
 import Inputs from "./pages/teacher/system/Inputs";
 import HistoryActions from "./pages/teacher/system/HistoryActions";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// 🔐 Auth check
+const isAuthenticated = () => localStorage.getItem("token") !== null;
 
 export const router = createBrowserRouter([
+  // 🔸 Login sahifasi
+  {
+    path: "/login",
+    element: <Login />,
+  },
+
+  // 🔸 Root redirect
   {
     path: "/",
-    element: <Navigate to="/teacher/dashboard" replace />,
-    errorElement: <ErrorPage />,
+    element: isAuthenticated() ? (
+      <Navigate to="/teacher/dashboard" replace />
+    ) : (
+      <Navigate to="/login" replace />
+    ),
   },
+
+  // 🔒 Himoyalangan yo‘nalishlar
   {
     path: "/teacher",
-    element: <TeacherLayout />,
+    element: (
+      <ProtectedRoute>
+        <TeacherLayout />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
+
     children: [
-      { index: true, element: <Navigate to="dashboard" replace /> }, // /teacher -> /teacher/dashboard
+      // 🔸 Asosiy redirect: /teacher → /teacher/dashboard
+      { index: true, element: <Navigate to="dashboard" replace /> },
+
+      // 🔸 Dashboard
       { path: "dashboard", element: <TeacherDashboard /> },
-      // mashgulot  bo'limi uchun yo'nalishlar keyin qo'shiladi
+
+      // 🔸 Trening bo‘limi
       {
         path: "trening",
         element: <Outlet />,
@@ -39,6 +65,8 @@ export const router = createBrowserRouter([
           { path: "jurnal", element: <AttendanceJournal /> },
         ],
       },
+
+      // 🔸 Topsiriqlar (tasks)
       {
         path: "tasks",
         element: <Outlet />,
@@ -48,8 +76,10 @@ export const router = createBrowserRouter([
           { path: "database", element: <AssignmentDatabase /> },
         ],
       },
-      { 
-        path: "systems", 
+
+      // 🔸 Tizim sozlamalari (systems)
+      {
+        path: "systems",
         element: <Outlet />,
         errorElement: <ErrorPage />,
         children: [
@@ -58,14 +88,17 @@ export const router = createBrowserRouter([
           { path: "history", element: <HistoryActions /> },
         ],
       },
+
+      // 🔸 Boshqa bo‘limlar
       { path: "class", element: <ClassSchedule /> },
       { path: "library", element: <Library /> },
       { path: "support", element: <TechnicalSupport /> },
     ],
   },
-  // Optional: catch-all (no-match)
+
+  // 🔸 404 sahifa
   {
     path: "*",
-    element: <div className="p-6">404 — Sahifa topilmadi</div>,
+    element: <div className="p-6 text-center text-xl">404 — Sahifa topilmadi</div>,
   },
 ]);
