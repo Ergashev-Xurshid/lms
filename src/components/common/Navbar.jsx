@@ -1,7 +1,6 @@
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { Menu } from "lucide-react";
 import React, { useState } from "react";
-import { set } from "react-hook-form";
 
 function Navbar({ setSidebarOpen }) {
   const [userOpen, setUserOpen] = useState(false);

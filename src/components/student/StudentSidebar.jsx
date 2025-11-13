@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { sidebarMenus } from "../data/sidebarMenus";
 import { useState } from "react";
-import { ChevronDown, ChevronRight, LayoutDashboard } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { studentMenu } from "../../data/sidebarMenu/studentMenu";
 
-export default function SidebarTeacher({ role, SidebarOpen ,setSidebarOpen }) {
-  const menus = sidebarMenus[role] || [];
+export default function StudentSidebar({SidebarOpen , setSidebarOpen }) {
+  const menus = studentMenu || [];
   //sitebar dropdown is open
   const [openDropdown, setOpenDropdown] = useState(null);
   const toggleDropdown = (name) => {

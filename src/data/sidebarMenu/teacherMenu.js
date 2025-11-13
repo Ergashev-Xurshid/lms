@@ -1,5 +1,4 @@
-export const sidebarMenus = {
-  teacher: [
+export const teacherMenu = [
     { name: "Asosiy sahifa  ", path: "/teacher/dashboard" },
     {
       name: "Mashg'ulotlar",
@@ -11,17 +10,17 @@ export const sidebarMenus = {
         { name: "Davomat jurnali ", path: "/teacher/trening/jurnal" },
       ],
     },
-    {  
+    {
       name: "Nazorat topshiriqlari ",
-      path: "/teacher/tasks" ,
-      children:[
+      path: "/teacher/tasks",
+      children: [
         { name: "Topshiriqlar bazasi ", path: "/teacher/tasks/database" },
-      ]
+      ],
     },
     { name: "Dars jadvali ", path: "/teacher/class" },
-    {  
-      name: "Tizim ", 
-      path: "/teacher/systems", 
+    {
+      name: "Tizim ",
+      path: "/teacher/systems",
       children: [
         { name: "Kirishlar ", path: "/teacher/systems/inputs" },
         { name: "Amallar tarixi ", path: "/teacher/systems/history" },
@@ -29,16 +28,4 @@ export const sidebarMenus = {
     },
     { name: "Kutubxona", path: "/teacher/library" },
     { name: "Texnik qo‘llab-quvvatlash ", path: "/teacher/support" },
-
-  ],
-  student: [
-    { name: "Dashboard", path: "/student/dashboard" },
-    { name: "Courses", path: "/student/courses" },
-    { name: "Profile", path: "/student/profile" },
-  ],
-  admin: [
-    { name: "Admin Panel", path: "/admin/dashboard" },
-    { name: "Users", path: "/admin/users" },
-    { name: "Reports", path: "/admin/reports" },
-  ],
-};
+  ]

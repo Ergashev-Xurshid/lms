@@ -1,15 +1,14 @@
 import { useState } from "react";
 import Navbar from "../components/common/Navbar";
-import SidebarTeacher from "../components/teacher/SidebarTeacher";
 import { Outlet } from "react-router-dom";
+import StudentSidebar from "../components/student/StudentSidebar";
 
-export default function TeacherLayout() {
+export default function StudentLayout() {
   const [SidebarOpen, setSidebarOpen] = useState(false);
-  const role = localStorage.getItem("role");
   return (
     <>
       <Navbar setSidebarOpen={setSidebarOpen} />
-      <SidebarTeacher
+      <StudentSidebar
         SidebarOpen={SidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
