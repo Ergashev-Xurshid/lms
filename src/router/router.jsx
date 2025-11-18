@@ -18,6 +18,16 @@ import ProtectedRoute from "../components/common/ProtectedRoute";
 //root loader
 import { rootLoader } from "../root/root";
 import StudentLayout from "../layout/StudentLayout";
+import StudentDashboard from "../pages/student/StudentDashboard";
+import StudentSubject from "../pages/student/StudentSubject";
+import ControlTasks from "../pages/student/ControlTasks";
+import LessonSchedule from "../pages/student/LessonSchedule";
+import LearningProcess from "../pages/student/LearningProcess";
+import ControlTable from "../pages/student/ControlTable";
+import Change from "../pages/student/Change";
+import FinancialPayment from "../pages/student/FinancialPayment";
+import StudentLibrary from "../pages/student/StudentLibrary";
+import { div } from "framer-motion/client";
 
 // ✅ Auth check funksiyasi
 const isAuthenticated = () => !!localStorage.getItem("token");
@@ -104,9 +114,16 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: "dashboard", element: <div>Courses bo‘limi</div>},
-      { path: "courses", element:  <div>Courses bo‘limi</div>},
-      { path: "profile", element: <div>Profile bo‘limi</div> },
+      { path: "dashboard", element:<StudentDashboard/>},
+      { path: "student-subject", element: <StudentSubject/> },
+      { path: "control-tasks", element: <ControlTasks/> },
+      { path: "lesson-schedule", element: <LessonSchedule/> },
+      { path: "learning-process", element: <LearningProcess/> },
+      { path: "control-table", element: <ControlTable/> },
+      { path: "change", element: <Change/> },
+      { path: "financial-payment", element: <FinancialPayment/> },
+      { path: "student-library", element: <StudentLibrary/> },
+      { path: "technical-support", element: <div>Support</div> },
     ],
   },
 
