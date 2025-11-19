@@ -15,8 +15,9 @@ export default function Login() {
   const [error, setError] = useState("");
 
   function generateCaptcha() {
-    const a = Math.floor(Math.random() * 9) + 1;
-    const b = Math.floor(Math.random() * 5) + 1;
+    const b = Math.floor(Math.random() * 5) + 1; 
+    const a = Math.floor(Math.random() * 9) + b; 
+
     const result = a - b;
     return { text: `${a} - ${b}`, result };
   }
