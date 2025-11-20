@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Change() {
+function StudentChange() {
   return (
     <div>Change</div>
   )
 }
 
-export default Change
+export default StudentChange

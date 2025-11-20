@@ -5,7 +5,7 @@ export const studentMenu = [
     { name: "Dars jadvali  ", path: "/student/lesson-schedule" },
     { name: "O'quv jarayoni  ", path: "/student/learning-process" },
     { name: "Nazorat jadvali  ", path: "/student/control-table" },
-    { name: "O'zgartirish ", path: "/student/change" },
+    { name: "O'zgartirish ", path: "/student/student-change" },
     { name: "Moliyaviy to'lov  ", path: "/student/financial-payment" },
     { name: "Kutubxona ", path: "/student/student-library" },
     { name: "Texnik qo‘llab-quvvatlash  ", path: "/student/technical-support" },

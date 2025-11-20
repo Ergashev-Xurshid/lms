@@ -1,10 +1,22 @@
 import logo from "../../assets/logo.png";
 import { Menu } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Navbar({ setSidebarOpen }) {
   const [userOpen, setUserOpen] = useState(false);
+  const menuRef = useRef(null); // dropdown va buttonni o'rash
 
+  // Tashqariga bosilganda yopish
+  useEffect(() => {
+    function handleClickOutside(e) {
+      // Agar bosilgan joy menuRef ichida bo'lmasa
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setUserOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -24,14 +36,13 @@ function Navbar({ setSidebarOpen }) {
               </span>
             </a>
           </div>
-          <div className="flex items-center ms-3 relative">
+          <div className="flex items-center ms-3 relative" ref={menuRef}>
             {/* Avatar button */}
             <button
               type="button"
               onClick={() => setUserOpen(!userOpen)}
-              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
+              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 cursor-pointer"
             >
-              <span className="sr-only">Open user menu</span>
               <img
                 className="w-8 h-8 rounded-full"
                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
