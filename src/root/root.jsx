@@ -1,19 +1,20 @@
-import { Navigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 export const rootLoader = () => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
-  if (!token) return <Navigate to="/login" replace />;
+  if (!token) return redirect("/login");
 
   switch (role) {
     case "teacher":
-      return <Navigate to="/teacher/dashboard" replace />;
+      return redirect("/teacher/dashboard");
     case "student":
-      return <Navigate to="/student/dashboard" replace />;
+      return redirect("/student/dashboard");
     case "admin":
-      return <Navigate to="/admin/dashboard" replace />;
+      return redirect("/admin/dashboard");
     default:
-      return <Navigate to="/login" replace />;
+      return redirect("/login");
   }
 };
+

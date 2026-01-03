@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import gerb from "../assets/gerb.png";
 
 export default function Login() {
   const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    if (token) {
+      navigate(`/${role}/dashboard`, { replace: true });
+    }
+  }, [navigate]);
   const {
     register,
     handleSubmit,
@@ -15,8 +22,8 @@ export default function Login() {
   const [error, setError] = useState("");
 
   function generateCaptcha() {
-    const b = Math.floor(Math.random() * 5) + 1; 
-    const a = Math.floor(Math.random() * 9) + b; 
+    const b = Math.floor(Math.random() * 5) + 1;
+    const a = Math.floor(Math.random() * 9) + b;
 
     const result = a - b;
     return { text: `${a} - ${b}`, result };
@@ -35,16 +42,15 @@ export default function Login() {
     // 2️⃣ Username va password tekshiruvi
     if (data.username === "admin" && data.password === "admin123") {
       // login muvaffaqiyatli
-      localStorage.setItem("token", "admin_token"); // oddiy token
-      localStorage.setItem("role", "admin"); // role saqlash
+      localStorage.setItem("token", "admin_token");
+      localStorage.setItem("role", "admin");
       setError("");
       navigate("/admin/dashboard");
     } else if (data.username === "teacher" && data.password === "teacher123") {
       localStorage.setItem("token", "teacher_token");
       localStorage.setItem("role", "teacher");
       navigate("/teacher/dashboard");
-    }
-    if (data.username === "student" && data.password === "student123") {
+    } else if (data.username === "student" && data.password === "student123") {
       localStorage.setItem("token", "student_token");
       localStorage.setItem("role", "student");
       navigate("/student/dashboard");

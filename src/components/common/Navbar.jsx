@@ -17,6 +17,12 @@ function Navbar({ setSidebarOpen }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const SignOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    window.location.href = "/login";
+  }
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -84,7 +90,7 @@ function Navbar({ setSidebarOpen }) {
                       Earnings
                     </a>
                   </li>
-                  <li>
+                  <li onClick={()=>SignOut()}>
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

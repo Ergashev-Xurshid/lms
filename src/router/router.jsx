@@ -1,6 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import Login from "../pages/Login";
-import ErrorPage from "../pages/ErrorPage";
+import { lazy } from "react";
+
+const Login = lazy(() => import("../pages/Login"));
+const ErrorPage = lazy(() => import("../pages/ErrorPage"));
+
+
 import { rootLoader } from "../root/root";
 
 import { teacherRoutes } from "./teacherRoutes";

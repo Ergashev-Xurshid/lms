@@ -1,17 +1,19 @@
 import { Navigate } from "react-router-dom";
+import { lazy } from "react";
 import ProtectedRoute from "../components/common/ProtectedRoute";
 import StudentLayout from "../layout/StudentLayout";
 
-import StudentDashboard from "../pages/student/StudentDashboard";
-import StudentSubject from "../pages/student/StudentSubject";
-import ControlTasks from "../pages/student/ControlTasks";
-import LessonSchedule from "../pages/student/LessonSchedule";
-import LearningProcess from "../pages/student/LearningProcess";
-import ControlTable from "../pages/student/ControlTable";
-import StudentChange from "../pages/student/StudentChange";
-import FinancialPayment from "../pages/student/FinancialPayment";
-import StudentLibrary from "../pages/student/StudentLibrary";
-import TechnicalSupport from "../pages/student/TechnicalSupport";
+const StudentDashboard = lazy(() => import("../pages/student/StudentDashboard"));
+const StudentSubject = lazy(() => import("../pages/student/StudentSubject"));
+const ControlTasks = lazy(() => import("../pages/student/ControlTasks"));
+const LessonSchedule = lazy(() => import("../pages/student/LessonSchedule"));
+const LearningProcess = lazy(() => import("../pages/student/LearningProcess"));
+const ControlTable = lazy(() => import("../pages/student/ControlTable"));
+const StudentChange = lazy(() => import("../pages/student/StudentChange"));
+const FinancialPayment = lazy(() => import("../pages/student/FinancialPayment"));
+const StudentLibrary = lazy(() => import("../pages/student/StudentLibrary"));
+const TechnicalSupport = lazy(() => import("../pages/student/TechnicalSupport"));
+
 
 export const studentRoutes = {
   path: "/student",
