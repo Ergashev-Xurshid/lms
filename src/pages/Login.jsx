@@ -84,7 +84,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-login">
       <div className="bg-white sm:bg-transparent mx-auto md:px-auto h-screen sm:h-full sm:p-12 w-[1100px] grid grid-cols-1 items-center">
-        <div className="bg-white md:rounded-2xl md:col-span-6  w-full md:w-[372px] h-[500px]">
+        <div className="bg-white rounded-2xl md:col-span-6  w-full md:w-[372px] h-[500px]">
           <div className="flex flex-col items-center mb-6 pt-8">
             <img src={gerb} alt="Logo" className="w-16 h-16 mb-3" />
             <h1 className="w-full text-[16px] text-[#666] font-bold text-center">

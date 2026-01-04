@@ -5,7 +5,6 @@ const Login = lazy(() => import("../pages/Login"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
 
 
-import { rootLoader } from "../root/root";
 
 import { teacherRoutes } from "./teacherRoutes";
 import { studentRoutes } from "./studentRoutes";
@@ -16,7 +15,6 @@ export const router = createBrowserRouter([
 
   { 
     path: "/", 
-    loader: rootLoader, 
     element: <Navigate to="/login" 
     replace /> 
   },
